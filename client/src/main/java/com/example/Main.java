@@ -34,6 +34,8 @@ public class Main {
                 System.out.println("\n Server chiuso");
                 s.close();
                 scanner.close();
+                out.close();
+                in.close();
                 break;
             } else {
                 System.out.println("La stringa ricevuta dal server: " + stringRicevuta);

@@ -34,6 +34,9 @@ public class MioThread extends Thread{
                 }
             
             } while (!stringRicevuta.equalsIgnoreCase("exit"));
+
+            this.socketClient.close();
+
         }catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

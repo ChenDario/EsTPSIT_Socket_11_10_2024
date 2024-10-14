@@ -1,9 +1,6 @@
 package com.example;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -16,12 +13,9 @@ public class Main {
         do {
             Socket s = server.accept(); // Socket che vuole entrare nel server
             System.out.println("Il client si è connesso");
+            
             MioThread t = new MioThread(s);
             t.start();
         } while (true);
-
-        //Chiudo tutto
-        //s.close();
-        //server.close();
     }
 }

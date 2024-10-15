@@ -52,7 +52,7 @@ public class MioThread extends Thread{
                             break;
 
                         default:
-                        stringaTrasformata = "Selezionare una delle operazioni presenti";
+                        stringaTrasformata = "!!!";
                             break;
                     }
                     

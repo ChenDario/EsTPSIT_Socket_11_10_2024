@@ -36,9 +36,12 @@ public class Main {
 
             stringRicevuta = in.readLine();
 
+            if(stringRicevuta.equalsIgnoreCase("!!!"))
+                System.out.println("Selezionare una delle operazioni presenti");
+                
             if(!stringRicevuta.equalsIgnoreCase("!"))
                 System.out.println("La stringa ricevuta dal server: " + stringRicevuta);
-            
+
         } while (!stringRicevuta.equalsIgnoreCase("!"));
 
         System.out.println("\n Server chiuso");

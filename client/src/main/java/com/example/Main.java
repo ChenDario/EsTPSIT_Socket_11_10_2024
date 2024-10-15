@@ -36,7 +36,6 @@ public class Main {
 
             stringRicevuta = in.readLine();
 
-
             if(!stringRicevuta.equalsIgnoreCase("!"))
                 System.out.println("La stringa ricevuta dal server: " + stringRicevuta);
             
@@ -47,7 +46,6 @@ public class Main {
         scanner.close();
         out.close();
         in.close();
-
     }
 
     public static void operazione() {

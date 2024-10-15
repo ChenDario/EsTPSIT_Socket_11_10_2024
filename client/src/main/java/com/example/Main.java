@@ -54,5 +54,6 @@ public class Main {
         System.out.println("\n b) Trasformare stringa in minuscolo");
         System.out.println("\n c) Ribaltare i caratteri della stringa");
         System.out.println("\n d) Contare il numero di caratteri");
+        System.out.println("\n 0) Confermare la disconnesione del server digitando exit");
     }
 }

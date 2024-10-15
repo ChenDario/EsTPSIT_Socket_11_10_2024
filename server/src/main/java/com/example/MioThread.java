@@ -30,10 +30,6 @@ public class MioThread extends Thread{
                 operazione = in.readLine();
                 System.out.println("Operazione: " + operazione);
             
-                if(stringRicevuta.equalsIgnoreCase("exit")){
-                    out.writeBytes("!"); //Mandare al client un messaggio
-                    break;
-                } else{
                     switch(operazione){
                         case "a": 
                         stringaTrasformata = stringRicevuta.toUpperCase(); //Metto in UpperCase
@@ -50,13 +46,17 @@ public class MioThread extends Thread{
                         case "d":
                         stringaTrasformata = stringRicevuta.length() + ""; //Cont dei caratteri presenti nella stringa
                             break;
+                        
+                        case "exit":
+                        stringaTrasformata = "!";
+                            break;
 
                         default:
                         stringaTrasformata = "Selezionare una delle operazioni presenti";
                             break;
                     }
+                    
                     out.writeBytes(stringaTrasformata + "\n"); //Lo mando al client
-                }
             
             } while (!stringRicevuta.equalsIgnoreCase("exit"));
 

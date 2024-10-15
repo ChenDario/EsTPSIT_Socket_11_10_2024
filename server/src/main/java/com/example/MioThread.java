@@ -32,10 +32,9 @@ public class MioThread extends Thread{
             
                 if(stringRicevuta.equalsIgnoreCase("exit")){
                     out.writeBytes("!"); //Mandare al client un messaggio
-                    break;
                 } else{
                     switch(operazione){
-                        case "a": //Maiuscolo
+                        case "a": 
                         stringaTrasformata = stringRicevuta.toUpperCase(); //Metto in UpperCase
                             break;
 

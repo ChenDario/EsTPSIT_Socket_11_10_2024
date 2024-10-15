@@ -27,23 +27,25 @@ public class Main {
             System.out.println("Inserire la stringa: ");
             String messaggioAlServer = scanner.nextLine(); 
     
-            out.writeBytes(messaggioAlServer + "\n");
+            out.writeBytes(messaggioAlServer + "\n"); //Mando al server la stringa
 
-            operazione();
+            operazione(); //Menu' operazioni
             stringOperazione = scanner.nextLine();
 
-            out.writeBytes(stringOperazione + "\n");
+            out.writeBytes(stringOperazione + "\n"); //Mando al server l'operazione da eseguire
 
-            stringRicevuta = in.readLine();
+            stringRicevuta = in.readLine(); //Ricevo la stringa dal server
 
+            //Leggo la stringa
             if(stringRicevuta.equalsIgnoreCase("!!!"))
                 System.out.println("Selezionare una delle operazioni presenti");
-                
+
             if(!stringRicevuta.equalsIgnoreCase("!"))
                 System.out.println("La stringa ricevuta dal server: " + stringRicevuta);
 
         } while (!stringRicevuta.equalsIgnoreCase("!"));
 
+        //Chiudo la connessione al server
         System.out.println("\n Server chiuso");
         s.close();
         scanner.close();

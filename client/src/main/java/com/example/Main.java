@@ -20,6 +20,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         String stringRicevuta;
+        String stringOperazione;
 
         do {
             //Si inserisce la stringa da mandare al server
@@ -27,21 +28,33 @@ public class Main {
             String messaggioAlServer = scanner.nextLine(); 
     
             out.writeBytes(messaggioAlServer + "\n");
-    
+
+            operazione();
+            stringOperazione = scanner.nextLine();
+
+            out.writeBytes(stringOperazione + "\n");
+
             stringRicevuta = in.readLine();
 
-            if(stringRicevuta.equalsIgnoreCase("!")){
-                System.out.println("\n Server chiuso");
-                s.close();
-                scanner.close();
-                out.close();
-                in.close();
-                break;
-            } else {
+
+            if(!stringRicevuta.equalsIgnoreCase("!"))
                 System.out.println("La stringa ricevuta dal server: " + stringRicevuta);
-            }
-        
+            
         } while (!stringRicevuta.equalsIgnoreCase("!"));
 
+        System.out.println("\n Server chiuso");
+        s.close();
+        scanner.close();
+        out.close();
+        in.close();
+
+    }
+
+    public static void operazione() {
+        System.out.println("\n Selezionare una delle seguenti operazioni");
+        System.out.println("\n a) Trasformare stringa in maiuscolo");
+        System.out.println("\n b) Trasformare stringa in minuscolo");
+        System.out.println("\n c) Ribaltare i caratteri della stringa");
+        System.out.println("\n d) Contare il numero di caratteri");
     }
 }

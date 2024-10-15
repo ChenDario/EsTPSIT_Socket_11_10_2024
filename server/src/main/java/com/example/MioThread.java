@@ -20,17 +20,42 @@ public class MioThread extends Thread{
             DataOutputStream out = new DataOutputStream(socketClient.getOutputStream());
             
             String stringRicevuta;
+            String operazione;
+            String stringaTrasformata;
             
             do {
                 stringRicevuta = in.readLine(); //Leggere ciò che ci manda il client
                 System.out.println("La stringa ricevuta: " + stringRicevuta); //Leggiamo il messaggio del client
+
+                operazione = in.readLine();
+                System.out.println("Operazione: " + operazione);
             
                 if(stringRicevuta.equalsIgnoreCase("exit")){
                     out.writeBytes("!"); //Mandare al client un messaggio
                     break;
                 } else{
-                    String stringaMaiuscola = stringRicevuta.toUpperCase();//Metto in upperCase
-                    out.writeBytes(stringaMaiuscola + "\n"); //Lo mando al client
+                    switch(operazione){
+                        case "a": //Maiuscolo
+                        stringaTrasformata = stringRicevuta.toUpperCase(); //Metto in UpperCase
+                            break;
+
+                        case "b":
+                        stringaTrasformata = stringRicevuta.toLowerCase(); //Metto in LowerCase
+                            break;
+
+                        case "c":
+                        stringaTrasformata = new StringBuilder(stringRicevuta).reverse().toString(); //Stringa ribaltata
+                            break;
+
+                        case "d":
+                        stringaTrasformata = stringRicevuta.length() + ""; //Cont dei caratteri presenti nella stringa
+                            break;
+
+                        default:
+                        stringaTrasformata = "Selezionare una delle operazioni presenti";
+                            break;
+                    }
+                    out.writeBytes(stringaTrasformata + "\n"); //Lo mando al client
                 }
             
             } while (!stringRicevuta.equalsIgnoreCase("exit"));

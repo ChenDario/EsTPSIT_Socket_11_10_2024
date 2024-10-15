@@ -27,25 +27,31 @@ public class Main {
             System.out.println("Inserire la stringa: ");
             String messaggioAlServer = scanner.nextLine(); 
     
-            out.writeBytes(messaggioAlServer + "\n"); //Mando al server la stringa
+            if(!messaggioAlServer.equalsIgnoreCase("exit")){
+                out.writeBytes(messaggioAlServer + "\n"); //Mando al server la stringa
 
-            operazione(); //Menu' operazioni
-            stringOperazione = scanner.nextLine();
+                operazione(); //Menu' operazioni
+                stringOperazione = scanner.nextLine();
 
-            out.writeBytes(stringOperazione + "\n"); //Mando al server l'operazione da eseguire
+                out.writeBytes(stringOperazione + "\n"); //Mando al server l'operazione da eseguire
 
-            stringRicevuta = in.readLine(); //Ricevo la stringa dal server
+                stringRicevuta = in.readLine(); //Ricevo la stringa dal server
 
-            //Leggo la stringa
-            if(stringRicevuta.equalsIgnoreCase("!!!"))
-                System.out.println("Selezionare una delle operazioni presenti");
-
-            if(!stringRicevuta.equalsIgnoreCase("!"))
-                System.out.println("La stringa ricevuta dal server: " + stringRicevuta);
+                //Leggo la stringa
+                if(stringRicevuta.equalsIgnoreCase("!!!")){
+                    System.out.println("\n Selezionare una delle operazioni presenti");
+                } else {
+                    System.out.println("\n Stringa trasformata: " + stringRicevuta);
+                }
+                    
+            } else {
+                out.writeBytes(messaggioAlServer + "\n"); //Mando al server la stringa di uscita
+                stringRicevuta = in.readLine();
+            }
 
         } while (!stringRicevuta.equalsIgnoreCase("!"));
 
-        //Chiudo la connessione al server
+        //Chiudo la connessione
         System.out.println("\n Server chiuso");
         s.close();
         scanner.close();
@@ -59,6 +65,5 @@ public class Main {
         System.out.println("\n b) Trasformare stringa in minuscolo");
         System.out.println("\n c) Ribaltare i caratteri della stringa");
         System.out.println("\n d) Contare il numero di caratteri");
-        System.out.println("\n 0) Confermare la disconnesione del server digitando exit");
     }
 }

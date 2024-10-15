@@ -27,33 +27,33 @@ public class MioThread extends Thread{
                 stringRicevuta = in.readLine(); //Leggere ciò che ci manda il client
                 System.out.println("La stringa ricevuta: " + stringRicevuta); //Leggiamo il messaggio del client
 
-                operazione = in.readLine();
-                System.out.println("Operazione: " + operazione);
+                if(stringRicevuta.equalsIgnoreCase("exit")){
+                    stringaTrasformata = "!";;
+                } else {
+                    operazione = in.readLine();
+                    System.out.println("Operazione: " + operazione);
             
-                switch(operazione){
-                    case "a": 
-                    stringaTrasformata = stringRicevuta.toUpperCase(); //Metto in UpperCase
-                        break;
+                    switch(operazione){
+                        case "a": 
+                        stringaTrasformata = stringRicevuta.toUpperCase(); //Metto in UpperCase
+                            break;
 
-                    case "b":
-                    stringaTrasformata = stringRicevuta.toLowerCase(); //Metto in LowerCase
-                        break;
+                        case "b":
+                        stringaTrasformata = stringRicevuta.toLowerCase(); //Metto in LowerCase
+                            break;
 
-                    case "c":
-                    stringaTrasformata = new StringBuilder(stringRicevuta).reverse().toString(); //Stringa ribaltata
-                        break;
+                        case "c":
+                        stringaTrasformata = new StringBuilder(stringRicevuta).reverse().toString(); //Stringa ribaltata
+                            break;
 
-                    case "d":
-                    stringaTrasformata = stringRicevuta.length() + ""; //Cont dei caratteri presenti nella stringa
-                        break;
-                        
-                    case "exit":
-                    stringaTrasformata = "!";
-                        break;
+                        case "d":
+                        stringaTrasformata = stringRicevuta.length() + ""; //Cont dei caratteri presenti nella stringa
+                            break;
 
-                    default:
-                    stringaTrasformata = "!!!";
-                        break;
+                        default:
+                        stringaTrasformata = "!!!";
+                            break;
+                    }
                 }
                     
                 out.writeBytes(stringaTrasformata + "\n"); //Lo mando al client
